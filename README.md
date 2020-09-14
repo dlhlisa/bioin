@@ -5,7 +5,7 @@ bioin
 [![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/REPLACE_WITH_APPVEYOR_LINK/branch/master?svg=true)](https://ci.appveyor.com/project/REPLACE_WITH_OWNER_ACCOUNT/bioin/branch/master)
 [![codecov](https://codecov.io/gh/REPLACE_WITH_OWNER_ACCOUNT/bioin/branch/master/graph/badge.svg)](https://codecov.io/gh/REPLACE_WITH_OWNER_ACCOUNT/bioin/branch/master)
 
-Study notes (mainly python code assignments from the EdX course: Introduction to Biology - The Secret of Life) for beginners in bioinformatics
+Study notes (mainly python code for the assignments from a Coursera course: Biology Meets Programming: Bioinformatics for Beginners) for beginners in bioinformatics
 
 ### Copyright
 
