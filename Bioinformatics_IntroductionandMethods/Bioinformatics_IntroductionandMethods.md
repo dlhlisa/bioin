@@ -200,5 +200,27 @@ Note: this paper is supplementary and thus OPTIONAL. You might need a subscripti
 Recommended
 http://www.ncbi.nlm.nih.gov/pmc/articles/PMC290255/ (Recommended by Sebastien Beaune)
 
+Readings
+
+Required
+
+Nature Biotechnology 22, 1315 - 1316 (2004)
+
+What is a hidden Markov model?
+
+Sean R Eddy.
+
+http://www.fing.edu.uy/~alopeza/biohpc/papers/hmm/Eddy-What-is-a-HMM-ATG4-preprint.pdf
+
+Optional
+
+Nucleic Acids Res. 1998 Jan 1;26(1):320-2.
+
+Pfam: multiple sequence alignments and HMM-profiles of protein domains.
+
+Sonnhammer EL, Eddy SR, Birney E, Bateman A, Durbin R.
+
+http://nar.oxfordjournals.org/content/26/1/320.full.pdf+html
+
 
 
