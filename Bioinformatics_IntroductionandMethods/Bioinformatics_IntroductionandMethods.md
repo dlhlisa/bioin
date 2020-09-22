@@ -112,115 +112,94 @@ Readings
 
 Required
 
-J Mol Biol. 1990 Oct 5;215(3):403-10.
-
-Basic local alignment search tool.
-
-Altschul SF, Gish W, Miller W, Myers EW, Lipman DJ.
+J Mol Biol. 1990 Oct 5;215(3):403-10. Basic local alignment search tool. Altschul SF, Gish W, Miller W, Myers EW, Lipman DJ. 
 
 (Note: currently there is no full-text link for this article in PubMed. However you might also find other websites holding the full-text for this paper, because it is so famous.)
 
 http://www.fi.muni.cz/~lexa/blast.html
 
-Nucleic Acids Res. 1997 Sep 1;25(17):3389-402.
+Nucleic Acids Res. 1997 Sep 1;25(17):3389-402. Gapped BLAST and PSI-BLAST: a new generation of protein database search programs. Altschul SF, Madden TL, Schäffer AA, Zhang J, Zhang Z, Miller W, Lipman, D.J. PMID: 9254694
 
-Gapped BLAST and PSI-BLAST: a new generation of protein database search programs.
+Genome Biol. 2001;2(10):REVIEWS2002. Having a BLAST with bioinformatics (and avoiding BLASTphemy). Pertsemlidis A, Fondon JW 3rd. PMID: 11597340
 
-Altschul SF, Madden TL, Schäffer AA, Zhang J, Zhang Z, Miller W, Lipman, D.J.
-
-PMID: 9254694
-
-Genome Biol. 2001;2(10):REVIEWS2002.
-
-Having a BLAST with bioinformatics (and avoiding BLASTphemy).
-
-Pertsemlidis A, Fondon JW 3rd.
-
-PMID: 11597340
-
-Nucleic Acids Res. 2006 Jul 1;34(Web Server issue):W6-9.
-
-BLAST: improvements for better sequence analysis.
-
-Ye J, McGinnis S, Madden TL.
-
-PMID: 16845079
+Nucleic Acids Res. 2006 Jul 1;34(Web Server issue):W6-9. BLAST: improvements for better sequence analysis. Ye J, McGinnis S, Madden TL. PMID: 16845079
 
 Optional
-Nat Genet. 1993 Mar;3(3):266-72.
 
-Identification of protein coding regions by database similarity search.
-
-Gish W, States DJ.
-
-PMID: 8485583
+Nat Genet. 1993 Mar;3(3):266-72. Identification of protein coding regions by database similarity search. Gish W, States DJ. PMID: 8485583
 
 Note: this paper is supplementary and thus OPTIONAL. You might need a subscription to the Nature Genetics magazine in order to view the full-text of this paper.
 
-Proc Natl Acad Sci U S A. 1990 Mar;87(6):2264-8.
-
-Methods for assessing the statistical significance of molecular sequence features by using general scoring schemes.
-
-Karlin S, Altschul SF.
-
-PMID: 2315319
+Proc Natl Acad Sci U S A. 1990 Mar;87(6):2264-8. Methods for assessing the statistical significance of molecular sequence features by using general scoring schemes. Karlin S, Altschul SF. PMID: 2315319
 
 Note: this paper is supplementary and thus OPTIONAL.
 
-Proc Natl Acad Sci U S A. 1993 Jun 15;90(12):5873-7.
-
-Applications and statistics for multiple high-scoring segments in molecular sequences.
-
-Karlin S, Altschul SF.
-
-PMID: 8390686
+Proc Natl Acad Sci U S A. 1993 Jun 15;90(12):5873-7. Applications and statistics for multiple high-scoring segments in molecular sequences. Karlin S, Altschul SF. PMID: 8390686
 
 Note: this paper is supplementary and thus OPTIONAL.
 
-Methods Enzymol. 1996;266:554-71.
-
-Analysis of compositionally biased regions in sequence databases.
-
-Wootton JC, Federhen S.
-
-PMID: 8743706
+Methods Enzymol. 1996;266:554-71. Analysis of compositionally biased regions in sequence databases. Wootton JC, Federhen S. PMID: 8743706
 
 Note: this paper is supplementary and thus OPTIONAL. You might need a subscription to the Methods in Enzymology magazine in order to view the full-text of this paper.
 
-Comput. Chem. 1993 Jun;17(2):149-163.
-
-Statistics of local complexity in amino acid sequences and sequence databases
-
-Wootton JC, Federhen S.
-
-Full-text at ScienceDirect
+Comput. Chem. 1993 Jun;17(2):149-163. Statistics of local complexity in amino acid sequences and sequence databases. Wootton JC, Federhen S. Full-text at ScienceDirect
 
 Note: this paper is supplementary and thus OPTIONAL. You might need a subscription to the Computers & Chemistry magazine in order to view the full-text of this paper.
 
-Recommended
-http://www.ncbi.nlm.nih.gov/pmc/articles/PMC290255/ (Recommended by Sebastien Beaune)
+Recommended http://www.ncbi.nlm.nih.gov/pmc/articles/PMC290255/ (Recommended by Sebastien Beaune)
 
 Readings
 
 Required
 
-Nature Biotechnology 22, 1315 - 1316 (2004)
-
-What is a hidden Markov model?
-
-Sean R Eddy.
-
-http://www.fing.edu.uy/~alopeza/biohpc/papers/hmm/Eddy-What-is-a-HMM-ATG4-preprint.pdf
+Nature Biotechnology 22, 1315 - 1316 (2004). What is a hidden Markov model? Sean R Eddy. http://www.fing.edu.uy/~alopeza/biohpc/papers/hmm/Eddy-What-is-a-HMM-ATG4-preprint.pdf
 
 Optional
 
-Nucleic Acids Res. 1998 Jan 1;26(1):320-2.
+Nucleic Acids Res. 1998 Jan 1;26(1):320-2. Pfam: multiple sequence alignments and HMM-profiles of protein domains. Sonnhammer EL, Eddy SR, Birney E, Bateman A, Durbin R. http://nar.oxfordjournals.org/content/26/1/320.full.pdf+html
 
-Pfam: multiple sequence alignments and HMM-profiles of protein domains.
+## Next Generation Sequencing (NGS)
 
-Sonnhammer EL, Eddy SR, Birney E, Bateman A, Durbin R.
+Genetic Variants
+- SNV: single nucleotide variant
+  - Substitution (SNP)
+  - Indel: insertion/deletion
+- Structural Variation (SV)
+  - Large-scale insertion/deletion
+  - Inversion
+  - Translocation
+  - Copy Number Variation (CNV)
 
-http://nar.oxfordjournals.org/content/26/1/320.full.pdf+html
+SNP calling is not genotyping: source: Nature Reviews Genetics 12, 443-451.
+- SNP calling aims to determine in which positions there are polymorphisms or in which positions at least one of the bases differs from a reference sequence
+- Genotype calling is the process of determining the genotype for each individual and is typically only done for positions in which a SNP or a 'variant' has already been called
 
+outline:
+- BWA & BWT algorithm
+  - BWT is the compression algorithm used in BWA 
+  - Lossless compression
+  - Sort and transform the char matrix with string rotation
+  - Reverse-char method was utilized for match
+  - Cannot handle gap
+- Variant caller
+  - samtools: mpileup + bcftools
+  - GATK: UnifiedGenotyper, HaplotypeCaller
+  - [ref](http://www/broadinstitute.org/gatk/guide/best-practices)
+- Demonstration
 
+Introduction of Likelihood and Bayesian approach
+
+Genotyper of MAQ and SNVMix
+
+Readings
+
+Required
+
+Nat Biotechnol. 2009 May;27(5):455-7. How to map billions of short reads onto genomes. Trapnell C, Salzberg SL. PMID: 19430453
+
+Nat Rev Genet. 2010 Jan;11(1):31-46. Sequencing technologies - the next generation. Metzker ML. PMID: 19997069
+
+An Introduction to Hidden Markov Models for Biological Sequences by Anders Krogh. Optional Nat Rev Genet. 2011 Jun;12(6):443-51. Genotype and SNP calling from next-generation sequencing data. Nielsen R, Paul JS, Albrechtsen A, Song YS. PMID: 21587300
+
+Nat Rev Genet. 2013 Jul;14(7):460-70. Sequencing studies in human genetics: design and interpretation. Goldstein DB, Allen A, Keebler J, Margulies EH, Petrou S, Petrovski S, Sunyaev S. PMID: 23752795
 
