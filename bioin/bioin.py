@@ -33,7 +33,7 @@ def canvas(with_attribution=True):
 
 def pattern_count(pattern, text):
     """
-    The number of times that a k-mer pattern appears as a substring of text
+    The number of times that a pattern appears as a substring of text
 
     Count the frequency (overlapping occurrences also counts) of a substring of pattern in the given text.
 

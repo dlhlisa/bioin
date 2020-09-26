@@ -4,7 +4,7 @@ from bioin import pattern_count
 
 def pattern_matching(pattern, genome):
     """
-    Find al occurrences of a pattern in a string
+    Find all occurrences of a pattern in a string
 
     Args:
         pattern: string, pattern in the genome
@@ -193,3 +193,5 @@ def approximate_pattern_count(pattern, text, d):
 
 print(skew_array("CATTCCAGTACTTCGATGATGGCGTGAAGA"))
 print(hamming_distance("TGACCCGTTATGCTCGAGTTCGGTCAGAGCGTCATTGCGAGTAGTCGTTTGCTTTCTCAAACTCC", "GAGCGATTAAGCGTGACAGCCCCAGGGAACCCACAAAACGTGATCGCAGTCCATCCGATCATACA"))
+
+print(symbol_array("AGCGTGCCGAAATATGCCGCCAGACCTGCTGCGGTGGCCTCGCCGACTTCACGGATGCCAAGTGCATAGAGGAAGCGAGCAAAGGTGGTTTCTTTCGCTTTATCCAGCGCGTTAACCACGTTCTGTGCCGACTTT", "C"))
