@@ -495,4 +495,4 @@ def profile_generated_string(text, motif_profile, k):
 
 
 a = profile_probable_motifs(profile_with_pseudocount(["TGA", "GTT", "GAA", "TGT"]), ["TGACGTTC", "TAAGAGTT", "GGACGAAA", "CTGTTCGC"])
-print(a)
+# print(a)
