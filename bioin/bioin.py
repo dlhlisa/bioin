@@ -32,18 +32,23 @@ def canvas(with_attribution=True):
 
 
 def pattern_count(pattern, text):
-    """
-    The number of times that a pattern appears as a substring of text
-
-    Count the frequency (overlapping occurrences also counts) of a substring of pattern in the given text.
+    """The number of times that a pattern appears as a substring of text.
 
     Args:
         pattern: string, the substring pattern to find in the given text.
-        text: string, the string space for looking
+        text: string, the string space for looking.
 
     Returns:
         Number of substring pattern that appears in text.
 
+    Examples:
+        Count the frequency (overlapping occurrences also counts) of a substring, i.e. pattern in the given string, i.e. text.
+
+        >>> pattern = "GCG" 
+        >>> text = "GCGCG"
+        >>> count = pattern_count(pattern, text)
+        >>> count
+            2
     """
     count = 0
     for i in range(len(text) - len(pattern) + 1):
@@ -62,18 +67,23 @@ def pattern_count(pattern, text):
 
 
 def frequency_map(text, k):
-    """
-    Find the most frequent k-mers in a string
-
-    Computes the frequency map of a given string text and integer k.
+    """Find the frequency of all k-mers in a string.
 
     Args:
-        text: string, text
-        k: integer, k
+        text: string, text.
+        k: integer, k, length of the substring (i.e. kmers).
 
     Returns:
-        All most frequent k-mers in text
+        A dictionary that contains {'k-mer': count} pair of all the k-mers in text.
 
+    Examples:
+        Computes the frequency map of a given string (i.e. text) and integer (i.e. k). Return a dictionary of the k-mers and the corresponding frequency for all k-mers that appears in text.
+        
+        >>> text = "CGATATATCCATAG" 
+        >>> k = 3
+        >>> kmers_count_map = frequency_map(text, k)
+        >>> kmers_count_map
+            {'CGA': 1, 'GAT': 1, 'ATA': 3, 'TAT': 2, 'ATC': 1, 'TCC': 1, 'CCA': 1, 'CAT': 1, 'TAG': 1}
     """
     freq = {}
     n = len(text)
@@ -87,18 +97,23 @@ def frequency_map(text, k):
 
 
 def frequent_words(text, k):
-    """
-    Find all the most frequent k-mers in text
-
-    A list contains all the most frequent k-mers in text.
+    """Find all the most frequent k-mers in text. Depend on function frequency_map.
 
     Args:
-        text: string, searching space text string
-        k: k-mers to find in text.
+        text: string, text.
+        k: integer, k, length of the substring (i.e. kmers).
 
     Returns:
-        A list of all the most frequent k-mers in the given text
+        A list that contains all the most frequent k-mers in text.
 
+    Examples:
+        Compare the frequency map of all the k-mers (given string (i.e. text) and integer (i.e. k)), then return a list of the most frequent k-mers.
+        
+        >>> text = "ACGTTGCATGTCGCATGATGCATGAGAGCT" 
+        >>> k = 4
+        >>> kmers_list = frequency_map(text, k)
+        >>> kmers_list
+            ["CATG", "GCAT"]
     """
     words = []
     freq = frequency_map(text, k)
@@ -111,31 +126,42 @@ def frequent_words(text, k):
 
 
 def reverse(pattern):
-    """
+    """Reverse a string sequence. For example, if we reverse the string 'ACGT', we would get 'TGCA'..
 
     Args:
-        pattern: string, a DNA string pattern
+        pattern: string, a DNA string (i.e. pattern).
 
     Returns:
-        string, a reversed string of the given pattern
+        string, a reversed string of the given pattern.
 
+    Examples:
+        Reverse a pattern string.
+        
+        >>> pattern = 'AAAACCCGGT'
+        >>> reversed_pattern = reverse(pattern)
+        >>> reversed_pattern
+            'TGGCCCAAAA'
     """
     reversed_pattern = pattern[::-1]
     return reversed_pattern
 
 
 def complement(pattern):
-    """
-    Compute the complementary string of pattern
-
-    With every nucleotide replaced by its complement.
+    """Compute the complementary string of pattern, with every nucleotide being replaced by its complement.
 
     Args:
-        pattern: string, a DNA string pattern
+        pattern: string, a DNA string pattern.
 
     Returns:
-        string, a DNA string pattern in complementary with the given pattern
+        string, a DNA string pattern in complementary with the given pattern.
 
+    Examples:
+        Return the complementary string of a pattern string.
+        
+        >>> pattern = 'AAAACCCGGT'
+        >>> complementary_pattern = complement(pattern)
+        >>> complementary_pattern
+            'TTTTGGGCCA'
     """
     complement_dict = {"A": "T", "C": "G", "G": "C", "T": "A"}
     complement_pattern = "".join(complement_dict[i] for i in pattern)
@@ -143,16 +169,21 @@ def complement(pattern):
 
 
 def reverse_complement(pattern):
-    """
-    Find the reverse complement of a DNA string.
-
+    """Find the reverse complement of a DNA string. This is how DNA is replicated.
 
     Args:
-        pattern: string, a DNA string pattern
+        pattern: string, a DNA string pattern.
 
     Returns:
-        The reverse complement of pattern
+        The reverse complement string of the given pattern string.
 
+    Examples:
+        Return the reversed complementary string of a pattern string.
+        
+        >>> pattern = 'AAAACCCGGT'
+        >>> reversed_complementary_pattern = reverse_complement(pattern)
+        >>> reversed_complementary_pattern
+            'ACCGGGTTTT'
     """
     pattern = reverse(pattern)  # reverse all letters in a string
     pattern = complement(pattern)  # complement each letter in a string
