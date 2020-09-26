@@ -314,7 +314,7 @@ def probability_with_pseudocount(text, motif_profile):
     """
 
     Args:
-        text:
+        text: string,
         motif_profile:
 
     Returns:
