@@ -31,6 +31,7 @@ API Documentation
    bioin.motif.normalize_probability
    bioin.motif.weighted_die
    bioin.motif.profile_generated_string
+   bioin.motif.GibbsSampler
 
    bioin.replication.pattern_matching
    bioin.replication.symbol_array
