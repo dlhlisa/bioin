@@ -158,7 +158,132 @@ Optional
 
 Nucleic Acids Res. 1998 Jan 1;26(1):320-2. Pfam: multiple sequence alignments and HMM-profiles of protein domains. Sonnhammer EL, Eddy SR, Birney E, Bateman A, Durbin R. http://nar.oxfordjournals.org/content/26/1/320.full.pdf+html
 
+## Markov Model
+
+Andrei Andreyevich Markov (1856-1922). A Markov chaini describes a discrete stochastic process at successive times. The transitions from one state to any of all states, including itself, are governed by a probability distribution.
+- $P(X_t | X_1...X_{t-1}) = P(X_i | X_{t-m}...X_{t-1})$
+  - $X_t = f(X_{t-1}, X_{t-2}, ..., X_{t-m})$
+- A chain of random variables in whick the next one depends (only) on the current one
+  - $-P(X_t | X_{1}...X_{t-1}) = P(X_{i} | X_{i-1})$
+
+Transition Probability
+- $a_{kl} = P(X_{t} = S_{l} | X_{t-1} = S_{k})$, state k transite to state l.
+- $a_{lk} = P(X_{t} = S_{k} | X_{t-1} = S_{l})$, state l transite to state k.
+- $a_{kl}$ is not necassarily equal to $a_{lk}$
+
+Hidden Markov Model (HMM)
+- In addition to State Transition Probability, each state of HMM has a probability distribution over the possible output tokens (Emission Probability)
+- Thus, a HMM is consist of two strings of information
+  - The state path, which is not directly visible
+  - The token path (emitted sqquence), based on the observable token path, we can infer the underling state path
+- Transition and Emmision probability.
+- Given a HMM, a sequence of tokens could be generated as following:
+  - when we "visit" a state, we emit a token from the state's emission probability distribution
+  - then, we choose which state to visit next, according to the state's transition probability distribution
+    - transition probability, $a_{kl} = P(x_{t} = S_{l} | x_{t-1} = S_{k}$
+    - emission probability, $e_{k}(b) = P(y_{i} = b | x_{i} = S_{k})$
+  - $P(X, Y) = \prod_{i=1}^L(e_{x_{i}}(y_{i}*a_{x_{i}x_{i+1}})$
+- M: Match (not necessarily identical); X: Insert at sequence X (delete at sequence Y); Y: Insert at sequence Y (delete at sequence X), $\delta$: Gap open; $\epsilon$: Gap extension.
+  ||M|X|Y|
+  |:------:|:------:|:------:|:------:|
+  |**M**|$1-2\delta$|$\delta$|$\delta$|
+  |**X**|$1-\epsilon$|$\epsilon$|0|
+  |**Y**|$1-\epsilon$|0|0|
+
+Sequence alignment with HMM
+- Each "token" of the HMM is an aligned pair of two residues (M state), or of a residue and a gap (X or Y state)
+  - transition and emission probabilityes define the probability of each aligned pair of sequences
+- Based on the HMM, each alignment of two sequences can be assigned with a probability
+  - given two input sequences, we look for an alignment with the maximum probability
+    - arg max(P(S1, S2, ali))
+    - $P(X, Y, ali) = max(P_{M}(n,m), P_{X}(n,m), P_{Y}(n,m))$
+
+Given the nature of HMM, many different state paths can give rise to the same token sequence, so we can simply sum up them together to get the full probability of a given token sequence: $P(X, Y) = \sum_{ali}(X, Y, ali)$
+
+HMM: as a predictor
+
+The Most Simple Gene Predictor (MSGP): Given a stretch of genomic sequence, where are the coding regions and where are noncoding regions?
+
+Training the model
+- What we need to train?
+  - transition probabilities between states
+  - emission probabilities for each state
+- Estimate probabilities from known "training set"
+  - an annotated genomic region, with coding/noncoding sequences labeled
+- $P_{coding}(i+1) = e_{coding}(x_{i+1}) max_{k \in (coding, noncoding)}(P_{k}(i)a_{k->coding})$
+- $P_{noncoding}(i+1) = e_{noncoding}(x_{i+1}) max_{k \in (coding, noncoding)}(P_{k}(i)a_{k->noncoding})$
+- $P(X, S) = max(P_{coding}(n), P_{noncoding}(n))$
+- Logarithmic transformation: ease calculation: $Log(a*b) = Log(a) + Log(b)$
+- "CGAAAAAATCG" will get the result "NNCCCCCCNNN" usign MSGP.
+
+GenScan:
+- Chris Burge (1996): A 27-state sem-HMM
+- A simpler model: 19-state
+- A model taking UTR introns into account: 35-state
+
+By decoupling states and tokens, Hidden Markov Model (HMM) provides a sound probability framework to model complex biological sequences.
+
+Readings Required
+
+Nature Biotechnology 22, 1315 - 1316 (2004). What is a hidden Markov model? Sean R Eddy. http://www.fing.edu.uy/~alopeza/biohpc/papers/hmm/Eddy-What-is-a-HMM-ATG4-preprint.pdf
+
+Optional
+
+Nucleic Acids Res. 1998 Jan 1;26(1):320-2. Pfam: multiple sequence alignments and HMM-profiles of protein domains. Sonnhammer EL, Eddy SR, Birney E, Bateman A, Durbin R. http://nar.oxfordjournals.org/content/26/1/320.full.pdf+html
+
 ## Next Generation Sequencing (NGS)
+
+Read: A short DNA fragment which is a readout by sequencer (in FASTQ format):
+- DNA sequence (symbols)
+- Quality information
+
+Quality: Given p = the probability of a base calling is wrong, its Quality Score can be written as:
+- Q = $-10*\log_{10}(p)$
+
+Association Study: for the given phenotypic trait, "functional variants" could be identified by comparing allele frequencies at hundreds of thousands of polymorphic sites, i.e allele A is associated with phenotypic trait P if (and only if) people who have P also have A more (or less) often than would be predicted from individual frequencies of A and P in the assessed population.
+
+RNA-Seq: Explore the transcriptome. "A transcriptome is a collection of all the transcripts present in a given cell." (NHGRI factsheet, NIH, US)
+
+Chromatin ImmunoPrecipitation Sequencing (ChIP-Seq): Profile Protein-DNA interaction. (deep sequencing technology)
+
+Reads Mapping and Variants Calling: the first step of deep sequencing
+
+Mapping: Input data
+- Reference Genome
+  - Nucleotide
+  - Length: humdreds of Mb per chromosome
+  - ~3 Gb in total (for human genome)
+- Reads
+  - Nucleotide, with various qualities (relatively high error rate: 1e-2~1e-5)
+  - Length: 36~80 bp per read
+  - Hundreds of Gbs per run
+
+ "Embeded" Alignment: One sequence is "embeded" in the other sequence (NGS Reads, PCR primer, etc.) What we need here is actually a hybrid "global-local" alignment.
+ - "Global" for short sequence (i.e. NGS Read)
+ - But "Local" fro long sequence (i.e. Reference Genome)
+ - In particular, the surrounding "overhang" gaps should be not penalized
+
+BLAST Ideas: Seeding-and-extending
+1. Find matches (seed) between the query and subject 
+2. Extend seed into High Scoring Segment Pairs (HSPs) 
+   - Run Smith-Waterman algorithm on the specified region only
+3. Assess the reliability of the alignment
+
+The speed is a big mater. Using Prefix tree or Suffix tree. 
+
+HBS: A native hash function
+
+Pigeonhole principle
+
+Mapping Quality: Given reference sequence z (length L), a read sequence x (length l), u is the alignment position of x on z, the probability that z actually coming from the position u is p(z|x,u)
+
+$p(z|x,u) = \prod_{mismatch}p(z_{i})$
+
+$SQ(U) = \log (p(z | x, u)) = \sum_{mismatch}p(z_{i}) = \sum_{mismatch}Q(z_{i})$
+
+If we assume that a uniform NULL model, i.e. the read can randomly come from all possible positions with equal probability, then the error of mapping to a specified position u could be written as:
+
+$E(u) = \frac{SQ(u)}{\sum_{i}SQ(i)}$
 
 Genetic Variants
 - SNV: single nucleotide variant
@@ -174,8 +299,28 @@ SNP calling is not genotyping: source: Nature Reviews Genetics 12, 443-451.
 - SNP calling aims to determine in which positions there are polymorphisms or in which positions at least one of the bases differs from a reference sequence
 - Genotype calling is the process of determining the genotype for each individual and is typically only done for positions in which a SNP or a 'variant' has already been called
 
+Counting: an intuitive (and naive) approach
+- counting high-confident, non-reference allele (i.e. Quality >= 20)
+  - Freq < 20% or > 80%: homozygous genotype
+  - Otherwise: heterozygous
+- Works well for "deeply sequenced regions" (DSR), i.e. depth > 25x
+  - But suffer from under-calling of heterozygous genotypes for low-coverage regions
+  - And can't give an objective measurement for reliability
+
+  Source: Nature Reviews Genetics 12, 443-451.
+
+  A simple probabilistic model for genotyping
+  1. For a diploid genome, there will be at most two different alleles (A and a) observed at a given site:
+    - 3 possible genotypes: <A,A>, <A,a>, <a,a>
+    - number of A: k, number of a: n-k
+2. Then, the probability for each genotypes is
+  - P(D | <A,A>) = the probability that we have (n-k) sequencing errors at this site $\prod_{n-k}P(x_{i})$
+  - Similarly, we can see the P(D | <a,a>) = $\prod_{k}P(x_{i})$
+  - P(D | <A,a>) = 1- (P(D | <A,A>) + P(D | <a,a>))
+3. Bayes Formula can be further employed to calculate posterior probabilities, i.e. P(<A,A> | D), P(<a,a> | D), P(<A,a> | D) if we can estimate the prior probabilities P(<A,A>), P(<a,a>) and P(<A,a>).
+
 outline:
-- BWA & BWT algorithm
+- BWA & BWT (Burrows-Wheeler transform) algorithm
   - BWT is the compression algorithm used in BWA 
   - Lossless compression
   - Sort and transform the char matrix with string rotation
@@ -183,7 +328,7 @@ outline:
   - Cannot handle gap
 - Variant caller
   - samtools: mpileup + bcftools
-  - GATK: UnifiedGenotyper, HaplotypeCaller
+  - GATK (Genome Analysis ToolKit): UnifiedGenotyper, HaplotypeCaller
   - [ref](http://www/broadinstitute.org/gatk/guide/best-practices)
 - Demonstration
 
@@ -191,9 +336,7 @@ Introduction of Likelihood and Bayesian approach
 
 Genotyper of MAQ and SNVMix
 
-Readings
-
-Required
+Readings Required
 
 Nat Biotechnol. 2009 May;27(5):455-7. How to map billions of short reads onto genomes. Trapnell C, Salzberg SL. PMID: 19430453
 
@@ -202,4 +345,94 @@ Nat Rev Genet. 2010 Jan;11(1):31-46. Sequencing technologies - the next generati
 An Introduction to Hidden Markov Models for Biological Sequences by Anders Krogh. Optional Nat Rev Genet. 2011 Jun;12(6):443-51. Genotype and SNP calling from next-generation sequencing data. Nielsen R, Paul JS, Albrechtsen A, Song YS. PMID: 21587300
 
 Nat Rev Genet. 2013 Jul;14(7):460-70. Sequencing studies in human genetics: design and interpretation. Goldstein DB, Allen A, Keebler J, Margulies EH, Petrou S, Petrovski S, Sunyaev S. PMID: 23752795
+
+## Variant Databases
+
+Where did our genetic variations come from?
+- inherited from parents
+- de novo mutations
+- somatic mutations
+
+Types of genetic variations in a human genome
+- Chromosomal aneuploidy
+- Structural Variations (SVs): deletion, tandem duplication, interspersed duplication (Copy Number Variations (CNVs)), mobile-element insertion, novel sequence insertion, inversion, translocation.
+- Indel - short Insertion/Deletion
+  - Within intergenic/intronic regions
+    - Non-frameshifting
+    - Frameshifting
+- SNV - Single nucleotide variation: there are about 3 million SNVs in one person's genome, equicalent to ~1/1000 frequency. promoter variant, coding variant, UTR variant, intronic variant, intergenic variants, non-coding RNA variant.
+  - SNVs within coding regions:
+    - Stop codon gain (nonsense)
+    - Non-synonymous (nissense)
+    - Synonymous (same sense/silent)
+    - Affect splicing
+    - Stop codon loss
+  - Nonsense SNVs are usually considered deleterious
+    - even though it is not always the case...
+  - synonymous, intronic, and intergenic variations are often ignored
+    - however, according to GWAS studies, 88% of trait-associated variants of weak effect are non-coding
+    - they remain under-studied and new methods are needed
+  - Most research so far had focused on missense SNVs
+  - Known deleterious mutations are enriched in missense mutations
+    - ~50 of all known mutations of Mendelian disorders are missense mutations. asscertainment bias?
+  - Although missense SNVs change the protein sequence, many do not cause phenotypic changes.
+
+Nomenclature
+- Mutation: when the monor allele has a frequency less than 1% in the general population, we usually called it a mutation
+- Polymorphism,: otherwise it is usually called a polymorphism. Sometimes the cut off of 5% is used.
+- Variation/variant: mutations and polymorphisms together are called variations or variants.
+
+Functional/Phenotypic "effects" of human genetic variations
+- disease vs. normal
+- deleterious vs. neutral
+- personal trait differences (e.g., height)
+
+- animal model phenotypic changes
+- cellular phenotypic changes
+ 
+ - protein function changes
+ - protein structure changes
+
+ Statistical and stochastic, not deterministic. Observations, not "truth"
+
+Variant databases
+- 1998 [dbSNP](http://www.ncbi.nlm.nih.gov/SNP/): build 138 contains genetic variations from 131 species
+  - SNPs
+  - Indels
+  - multinucleotide polymorphism
+  - microsatellite markers
+  - short tandem repeats
+  - heterozygous sequences
+- 2010 dbVar
+- 2012 [1000 genomes](http://www.1000genomes.org/)
+- 1987 [OMIM](http://www.omim.org/): Online Mendelian Inheritance in Man
+- 1996 [HGMD](http://www.hgmd.cf.ac.uk/): Human Gene Mutation Database, a comprehensive collection of gene mutations that underlie, or are associated with, human genetic diseases, manually curated from literature.
+- 2004 COSMIC
+- 2007 LSDBs
+- 2012 ClinVar
+
+Conservation-based and rule-based methods: SIFT & PolyPhen
+- 1999, an early attempt based on BLOSUM substitution matrix
+- Mor successful methods since 2001
+  - Conservation-based methods (e.g., SIFT) [Sort Intolerant From Tolerant substitutions](http://sift.jcvi.org/)
+    - Important positions (such as active sites) tend to be conserved in the protein family across species.
+      - mutations at well-conserved positions tend to be deleterious
+    - Some positions have a high degree of diversity across species
+      - mutations at these positions tend to be neutral
+  - Rule-based methods (e.g., PolyPhen)
+  - Machine learning classifier-based methods (e.g., [PolyPhen2](http://genetics.bwh.harvard.edu/pph2/), [SAPRED](http://www.sapred.cbi.pku.edu.cn/): **S**ingle **A**mino aicd **P**olymorphisms disease-association **Pred**ictor)
+
+Sequence search database: SWISS-PORT; BLAST, FASTA, PSI-blast, CLUSTAL; MOTIF; SIFT & PolyPhen.
+
+Homology Modeling: [SWISS-MODEL](http://swissmodel.expasy.org/)
+
+Wherever there are challenges, there are opportunities.
+
+Readings required
+
+Bioinformatics. 2007 Jun 15;23(12):1444-50. Finding new structural and sequence attributes to predict possible disease association of single amino acid polymorphism (SAP). Ye ZQ, Zhao SQ, Gao G, Liu XQ, Langlois RE, Lu H, Wei L. PMID: 17384424
+
+Optional:
+
+Annu Rev Biophys Biomol Struct. 2000;29:291-325. Comparative protein structure modeling of genes and genomes. Martí-Renom MA, Stuart AC, Fiser A, Sánchez R, Melo F, Sali A. PMID: 10940251
 
