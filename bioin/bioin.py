@@ -75,7 +75,7 @@ def frequency_map(text, k):
         k (int): length of the substring (i.e. kmers).
 
     Returns:
-        Dictionary, a dictionary that contains {'k-mer': count} pair of all the k-mers in text.
+        Dictionary, a dictionary that contains the count of all the k-mers in text.
 
     Examples:
         Computes the frequency map of a given string (i.e. text) and integer (i.e. k). Return a dictionary of the k-mers and the corresponding frequency for all k-mers that appears in text.
