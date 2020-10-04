@@ -102,3 +102,9 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+*.yml
+CODE_OF_CONDUCT.md
+*.cfg
+*.in
+
