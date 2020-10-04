@@ -9,8 +9,7 @@ Handles the primary functions
 
 
 def canvas(with_attribution=True):
-    """
-    Placeholder function to show example docstring (NumPy format)
+    """Placeholder function to show example docstring (NumPy format)
 
     Replace this function and doc string for your own project
 
@@ -32,14 +31,15 @@ def canvas(with_attribution=True):
 
 
 def pattern_count(pattern, text):
-    """The number of times that a pattern appears as a substring of text.
+    """
+    The number of times that a pattern appears as a substring of text.
 
     Args:
-        pattern: string, the substring pattern to find in the given text.
-        text: string, the string space for looking.
+        pattern (str): the substring pattern to find in the given text.
+        text (str): the string space for looking.
 
     Returns:
-        Number of substring pattern that appears in text.
+        String, number of substring pattern that appears in text.
 
     Examples:
         Count the frequency (overlapping occurrences also counts) of a substring, i.e. pattern in the given string, i.e. text.
@@ -67,14 +67,15 @@ def pattern_count(pattern, text):
 
 
 def frequency_map(text, k):
-    """Find the frequency of all k-mers in a string.
+    """
+    Find the frequency of all k-mers in a string.
 
     Args:
-        text: string, text.
-        k: integer, k, length of the substring (i.e. kmers).
+        text (str): text.
+        k (int): length of the substring (i.e. kmers).
 
     Returns:
-        A dictionary that contains {'k-mer': count} pair of all the k-mers in text.
+        Dictionary, a dictionary that contains {'k-mer': count} pair of all the k-mers in text.
 
     Examples:
         Computes the frequency map of a given string (i.e. text) and integer (i.e. k). Return a dictionary of the k-mers and the corresponding frequency for all k-mers that appears in text.
@@ -100,11 +101,11 @@ def frequent_words(text, k):
     """Find all the most frequent k-mers in text. Depend on function frequency_map.
 
     Args:
-        text: string, text.
-        k: integer, k, length of the substring (i.e. kmers).
+        text (str): text.
+        k (int): length of the substring (i.e. kmers).
 
     Returns:
-        A list that contains all the most frequent k-mers in text.
+        List, a list that contains all the most frequent k-mers in text.
 
     Examples:
         Compare the frequency map of all the k-mers (given string (i.e. text) and integer (i.e. k)), then return a list of the most frequent k-mers.
@@ -129,10 +130,10 @@ def reverse(pattern):
     """Reverse a string sequence. For example, if we reverse the string 'ACGT', we would get 'TGCA'..
 
     Args:
-        pattern: string, a DNA string (i.e. pattern).
+        pattern (str): a DNA string (i.e. pattern).
 
     Returns:
-        string, a reversed string of the given pattern.
+        String, a reversed string of the given pattern.
 
     Examples:
         Reverse a pattern string.
@@ -150,10 +151,10 @@ def complement(pattern):
     """Compute the complementary string of pattern, with every nucleotide being replaced by its complement.
 
     Args:
-        pattern: string, a DNA string pattern.
+        pattern (str): a DNA string pattern.
 
     Returns:
-        string, a DNA string pattern in complementary with the given pattern.
+        String, a DNA string pattern in complementary with the given pattern.
 
     Examples:
         Return the complementary string of a pattern string.
@@ -172,10 +173,10 @@ def reverse_complement(pattern):
     """Find the reverse complement of a DNA string. This is how DNA is replicated.
 
     Args:
-        pattern: string, a DNA string pattern.
+        pattern (str): a DNA string pattern.
 
     Returns:
-        The reverse complement string of the given pattern string.
+        String, the reverse complement string of the given pattern string.
 
     Examples:
         Return the reversed complementary string of a pattern string.

@@ -6,11 +6,11 @@ def pattern_matching(pattern, genome):
     """Find all occurrences of a pattern in a string.
 
     Args:
-        pattern: string, pattern string to search in the genome string.
-        genome: string, search space for pattern.
+        pattern (str): pattern string to search in the genome string.
+        genome (str): search space for pattern.
 
     Returns:
-        list of int, i.e. all starting positions in genome where pattern appears as a substring.
+        List, list of int, i.e. all starting positions in genome where pattern appears as a substring.
 
     Examples:
         Find all the starting positions for a pattern string in the genome string.
@@ -63,11 +63,11 @@ def symbol_array(genome, symbol):
     The symbol array for Genome equal to "AAAAGGGG" and symbol equal to "A".
 
     Args:
-        genome: string, a DNA string as the search space.
-        symbol: string, the single base to query in the search space.
+        genome (str): a DNA string as the search space.
+        symbol (str): the single base to query in the search space.
 
     Returns:
-        a dictionary, position-counts pairs of symbol in each genome sliding window.
+        Dictionary, a dictionary, position-counts pairs of symbol in each genome sliding window.
 
     Examples:
         The symbol array for genome equal to "AAAAGGGG" and symbol equal to "A".
@@ -90,11 +90,11 @@ def faster_symbol_array(genome, symbol):
     """A faster calculation method for counting a symbol in genome.
 
     Args:
-        genome: string, a DNA string as the search space.
-        symbol: string, the single base to query in the search space.
+        genome (str): a DNA string as the search space.
+        symbol (str): the single base to query in the search space.
 
     Returns:
-        a dictionary, position-counts pairs of symbol in each genome sliding window.
+        Dictionary, a dictionary, position-counts pairs of symbol in each genome sliding window.
 
     Examples:
         The symbol array for genome equal to "AAAAGGGG" and symbol equal to "A".
@@ -161,10 +161,10 @@ def skew_array(genome):
     Given a string Genome, we can form its skew array by setting Skew[0] equal to 0, and then ranging through the genome.  At position i of Genome, if we encounter an A or a T, we set Skew[i+1] equal to Skew[i]; if we encounter a G, we set Skew[i+1] equal to Skew[i]+1; if we encounter a C, we set Skew[i+1] equal to Skew[i]-1.
 
     Args:
-        genome: string, a DNA string genome.
+        genome (str): a DNA string genome.
 
     Returns:
-        list, the i-th element is skew[i], which equals to the number of G minus the number of C, in the first i nucleotides of the genome, set skew[0]=0.
+        List, the i-th element is skew[i], which equals to the number of G minus the number of C, in the first i nucleotides of the genome, set skew[0]=0.
 
     Examples:
         The array Skew for Genome = "CATGGGCATCGGCCATACGCC".
@@ -192,10 +192,10 @@ def minimum_skew(genome):
     """Find a position in a genome where the skew diagram attains a minimum.
 
     Args:
-        genome: string, a DNA string genome.
+        genome (str): a DNA string genome.
 
     Returns:
-        list, the position (integers i) where the minimum values (skew[i]) are in the skew array.
+        List, the position (integers i) where the minimum values (skew[i]) are in the skew array.
 
     Examples:
         Taking a DNA string Genome as input and returning all integers i minimizing Skew[i] for Genome.
@@ -219,11 +219,11 @@ def hamming_distance(p, q):
     """Calculate the HammingDistance for two strings. We say that position i in k-mers p and q is a mismatch if the symbols at position i of the two strings are not the same. The total number of mismatches between strings p and q is called the Hamming distance between these strings. We will let you implement a function to compute this distance, called HammingDistance(p, q).
 
     Args:
-        p: string, the first DNA string.
-        q: string, the second DNA string, p and q of the equal length.
+        p (str): the first DNA string.
+        q (str): the second DNA string, p and q of the equal length.
 
     Returns:
-        integer, number of different base count between p and q, i.e. the Hamming distance between these strings.
+        Integer, number of different base count between p and q, i.e. the Hamming distance between these strings.
 
     Examples:
         Solving the Hamming distance of two DNA Genomes.
@@ -245,12 +245,12 @@ def approximate_pattern_matching(pattern, text, d):
     """Find all approximate occurences of a pattern in a string. We say that a k-mer Pattern appears as a substring of Text with at most d mismatches if there is some k-mer substring Pattern' of Text having d or fewer mismatches with Pattern; that is, HammingDistance(Pattern, Pattern') ≤ d. Our observation that a DnaA box may appear with slight variations leads to the following generalization of the Pattern Matching Problem.
 
     Args:
-        text: string, a DNA string genome.
-        pattern: string, a substring of DNA genome.
-        d: integer, at most d mismatches between pattern and a substring in text.
+        text (str): a DNA string genome.
+        pattern (str): a substring of DNA genome.
+        d (int): at most d mismatches between pattern and a substring in text.
 
     Returns:
-        list, all starting positions where pattern appears as a substring of text with at most d mismatches.
+        List, all starting positions where pattern appears as a substring of text with at most d mismatches.
 
     Examples:
         Positions that a pattern appears as a substring of text with at most d mismatches fulfilled.
@@ -275,12 +275,12 @@ def approximate_pattern_count(pattern, text, d):
     This is because AAAAA appears four times in this string with at most one mismatch: AACAA, ATAAA, AAACA, and AAAGA. Notice that two of these occurrences overlap.
 
     Args:
-        pattern: string, a sub DNA string.
-        text: string, a DNA string.
-        d: the number of maximum mismatches.
+        pattern (str): a sub DNA string.
+        text (str): a DNA string.
+        d (int): the number of maximum mismatches.
 
     Returns:
-        integer, the number of occurrences of pattern in text with at most d mismatches.
+        Integer, the number of occurrences of pattern in text with at most d mismatches.
 
     Examples:
         The number of times Pattern appears in Text with at most d mismatches.
