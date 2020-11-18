@@ -231,9 +231,12 @@ Optional
 
 Nucleic Acids Res. 1998 Jan 1;26(1):320-2. Pfam: multiple sequence alignments and HMM-profiles of protein domains. Sonnhammer EL, Eddy SR, Birney E, Bateman A, Durbin R. http://nar.oxfordjournals.org/content/26/1/320.full.pdf+html
 
+week 6
+
 ## Next Generation Sequencing (NGS)
 
-Read: A short DNA fragment which is a readout by sequencer (in FASTQ format):
+Read: A short DNA fragment which is 
+a readout by sequencer (in FASTQ format):
 - DNA sequence (symbols)
 - Quality information
 
@@ -435,4 +438,456 @@ Bioinformatics. 2007 Jun 15;23(12):1444-50. Finding new structural and sequence 
 Optional:
 
 Annu Rev Biophys Biomol Struct. 2000;29:291-325. Comparative protein structure modeling of genes and genomes. Martí-Renom MA, Stuart AC, Fiser A, Sánchez R, Melo F, Sali A. PMID: 10940251
+
+week 7
+
+## Mid-term tests
+
+week 8
+
+## Next generation sequencing: transcriptome analysis, and RNA-Seq
+
+"A transcriptome is a collection of all the transcripts present in a given cell." (NHGRI factsheet, NIH, US)
+
+Qualitative: identify all transcripts, i.e. expressed genes as well as their isoforms.
+
+Quantitative: estimate the expression level of these transcripts, i.e. the transcript abundance of expressed genes/isoforms.
+
+Real-Time qRT-PCR
+- based on complementary hybridization
+  - development of PCR technology
+- widely accepted as the "Gold Standard"
+- low-throughput
+- Prior knowledge of transcript sequences needed!
+
+Microarray
+- DNA microarrays are used to analyze gene expression based on complementary hybridization reaction.
+- labeled targets: RNAs derived from biological samples
+- probes: a large number of ordered sets of immobilized nucleotide molecules with known sequences.
+- prior knowledge of transcript sequences needed!
+
+Expressed Sequence Tag (EST)
+- Randomly sequencing individual clone of a cDNA library
+  - short "tag": 60~500bp
+  - one-shot: rather error-prone (~1%)
+- NO prior knowledge of transcript sequences needed!
+  - Not only measure, but also discovery
+
+Random sampling the transcriptome: the detection power as well as sensitivity of RNA-Seq is highly dependent on the sequencing depth.
+- 100~150x as a decent start for a typical mammalian transcriptome RNA-Seq.
+- number of reads proportional to transcript abundance
+- number of mapped reads proportional to transcript length
+- number of mapped reads proportional to library depth
+
+Genome DNA (Gene A vs Gene B (2:1))
+
+Abundance of transcripts (2:2)
+
+Observed reads count (4:2)
+
+Observed abundance (4:2)
+
+Genome DNA (Gene B vs Gene B (1:1))
+
+Abundance of transcripts (2:2)
+
+Total reads (depth): (2n:n)
+
+Observed reads count (4:2)
+
+Observed abundance (4:2)
+
+From raw count to expression level
+
+RPKM: the number of mapped Reads Per KB Per Million reads.
+
+RPKM = $10^9\frac{C}{NL}$
+- C: the number of mapped reads for specified transcript
+- N: the number of total mapped reads
+- L: the length fo the specified transcript
+
+Mapping: Input Data
+
+- Reference Genome
+  - Nucleotide
+  - Length: Hundreds of Mb per chromosome
+  - ~3Gb in total (for human genome)
+- Reads
+  - Nucleotide, with various qualities (relatively high error rate: 1e-2~1e-5)
+  - Length: 36~80 bp per read
+  - Hundreds of Gbs per run
+
+Handle junction reads: "Join exon" strategy
+1. Build "conceptual junctions library" (CJL) for each known transcripts
+2. Map RNA-Seq reads to the genome as well as the conceptual junction library
+- Fast
+- Can identify novel splicing isoforms 
+- Can NOT find novel exons and novel genes
+
+Handle junction reads: "Split reads" strategy
+1. Unsplicingly map to genome, (Non-junction reads)
+2. (if 1 failed), Split reads into several k-mer seeds
+3. Retry with these seeds
+4. Stitch mapped seeds together as whole read alignment 
+- Slower than "join exon"
+- Can identigy novel splicing isoforms
+- Can find novel exons and novel genes
+
+RNA-Seq: Mapping & Assembling
+- Assembly: reconstruct full-length transcript sequences from the (mapped) reads
+- Quantification: estimate the expression abundance for each transcripts
+
+Assembling as a graph traveler
+
+(Rationally) weighted edges based on various suppoeting evidences
+- Existing transcript data: junction reads
+- Sequence context: splicing junction sites, polyA signals, ...
+- Existing annotation
+
+Cufflinks: Transcript assembly, differential expression and differential regulation for RNA-Seq
+
+Commandline tool:
+- Tophat: Spliced reads mapper for RNA-Seq
+- Cufflinks: Transcript assembly, differential expression, and differential regulation for RNA-Seq
+- Cuffmerge: merge together several Cufflinks assemblies
+- Cuffdiff
+  - calculates expression in two or more samples: number of reads of each transcript proportional to its abundance
+  - tests the statistical significance each observed chage in expression between them
+R package:
+- CummeRbund: An R package to aid and simplify the task of analyzing Cufflinks RNA-Seq output.
+  - csDensity(genes(cuff_data))
+  - csScatter(genes(cuff_data), 'C1', 'C2')
+  - csVolcano(genes(cuff_data), 'C1', 'C2')
+  - expressionBarplot(mygene)
+  - expression Barplit(isoforms(mygene))
+
+What can RNA-Seq do?
+- Level 1
+  - Gene expression (RPKM)
+- Level 2
+  - Transcriptome reconstruction & Alternative Splicing
+  - Isoform abundance & Differential Expression
+- Also
+  - RNA-editing (DNA-SNP vs RNA-SNP)
+  - eQTL(SNP-Expression)
+  - Fusion
+
+- Using result:
+  - GO & Pathway Enrichment
+
+Reading mapping, transcriptome reconstruction, differential expression.
+
+Readings
+
+Required
+
+Nat Methods. 2011 Jun;8(6):469-77. Computational methods for transcriptome annotation and quantification using RNA-seq. Garber M, Grabherr MG, Guttman M, Trapnell C. PMID: 21623353
+
+Nat Biotechnol. 2010 May;28(5):511-5. Transcript assembly and quantification by RNA-Seq reveals unannotated transcripts and isoform switching during cell differentiation. Trapnell C, Williams BA, Pertea G, Mortazavi A, Kwan G, van Baren MJ, Salzberg SL, Wold BJ, Pachter L. PMID: 20436464
+
+week 9
+
+## Transcriptome analysis with noncoding RNAs
+
+### From information to knowledge
+
+A non-coding RNA (ncRNA) is any RNA molecule that could function without being translated into a protein.
+
+The DNA sequence from which a non-coding RNA is transcribed as the end product is often called an RNA gene or non-coding RNA gene.
+
+Early discovered ncRNAs are mostly housekeeping
+- "Assist"in translation in a necessary, but passive roles
+- Constitutively expressed
+- Include: rRNA, tRNA, snRNA, snoRNA, tmRNA, telomerase RNA...
+
+Recently discovered regulatory ncRNAs since 2000
+- actively regulate gene transcription and translation
+- are involved in various gene regulations through multiple mechanisms
+- many have specific expression patterns
+- are widely encoded in the genome
+  - the ENCODE (ENCyclopedia Of DNA Elements) pilot project suggested that over 90% of the human genome may be represented in primary transcripts.
+  - over 95% of all the transcripts are noncoding. Some estimate the number of ncRNAs to be ~30000.
+
+microRNA (miRNA)
+- single-stranded RNAs of 21-23 (or some say 20-25) nt RNAs with regulatory functions when associated with a protein complex.
+- in plants miRNAs can silence gene activity via destruction of homologous mRNA or blocking its translation. In animals, miRNAs inhibit translation by binding with imperfect homology to the 3' untranslated region of mRNA.
+
+Xist: Beyond "small" ncRNA, X inactive-specific transcript
+
+SCA8: Long ncRNA in human disease. SCA8 is mutated in one form of spinal cerebella ataxia.
+
+Long ncRNAs
+- Estimated ~2000+ in human
+- Some, but not all, are mRNA-like, with Poly(A) tails.
+- Most have unknown function. Many may function via cis or trans antisense pairing.
+  - Dosage compensation (e.g. XIST)
+  - Neuron development (e.g. SCA8)
+  - Genetic imprinting (e.g. IGF/H19)
+  - Post-transcriptional regulation
+    - mRNA degradation or stabilization
+  - Translational regulation
+  - Modulate protein function by directly binding to the protein
+
+### Data mining: identify long ncRNAs
+
+Identification
+
+Features ~ property of an entity
+- structural features
+- evolutionary features
+
+Sequence features only
+Mechanism neutral: works for both long and small ncRNAs
+Accurate and fast
+
+Initialized feature set
+- properties of entity
+- speculate based on existed knowledge
+- certain statistic established by predecessors
+- the data that is thought to be relevant
+
+(Conceptually) Translated Product
+
+Coverage: Coverage(S) = $\frac{L_{ORF} - (L_{mismatch} + 2 * L_{frameshift})}{Total\, Length}$
+
+ORF integrity: indecates whether the predicted ORF begins with a start codon and ends with an in-frame stop condon
+
+LOG-ODD score: indicator of the quality of a predicted ORF. The higher the score, the better the quality of the ORF.
+
+Homologous
+
+number of BLASTX hits: A true protein-coding transcript is likely to have more hits with known proteins than a non-coding transcript does
+
+Hit Score: For a true protein-coding transcript, the hits are also likely to have higher quality 
+$S_{i} = mean_{j}{-log_{10}{E_{ij}}}$, $i \in [0, 1, 2]$
+HIT SCORE = $mean_{i \in {0, 1, 2}}{Si} = \frac{\sum_{i=0}^{2}S_{i}}{3}$
+
+Frame Score: for a true protein-coding transcript, most of the hits are likely to reside within one frame, whereas for a true non-coding transcript, even if it matches certain known protein sequence segments by chance, these chance hits are likely to scatter in any of the three frames
+FRAME SCORE = $variance_{i \in {0, 1, 2}}{S_{i}} = \frac{\sum_{i=0}^{2}(S_{i} - \bar{S})^2}{2}$
+
+http://cpc.cbi.pku.edu.cn
+
+### Data mining: differential expression and clustering
+
+Differentially expressed genes
+Co-expressed genes
+
+Data mining: differentially expression calling
+- identigy the genes with biological-significant difference in expression levels across samples
+- differences in expression values can result from many non-biological sources(e.g. experiment error/bias)
+  - the 'real' differences are the differences that can NOT be explained by the various errors introduced during the expreimental phase
+
+1. Random errors arise from random fluctuations in the measurements
+2. It could be reduced by repeating experiment many times (and get a mean value)
+3. Ranodm errors could be modeled statistically by variance.
+
+Statistical calling
+1. Select a statistic whick takes the variance into account, and will rank the genes in order of supporting strength for 'differential expression'.
+2. Derive the p-value for each gene, based on the NULL distribution of the statistic.
+3. Choose a critical-value for the gene with p-value less than which being called as 'being statistically significant'.
+$\frac{signal}{noise} = \frac{difference\, between\, group\, means}{variability\, of\, groups} = \frac{\bar{X}_{T} - \bar{X}_{C}}{SE(\bar{X}_{T} - \bar{X}_{C})}$ = t-value
+  - the t-test assesses thether the means of two groups are statistically different from each other
+    - take the variance into account through Standard Error (SE)
+  - Need to estimate the SE correctly
+    - but the correct estimation depends on prior distribution (Normal) as well as the number of replicates (>10)
+
+Hypothesis test
+
+|Output of statistical test| Hypothesis truth?|Hypothesis truth?|
+|------|------|------|
+|| $H_{1}$ (active)| $H_{0}$ (inactive)|
+|Reject $H_{0}$ (active)|Hit|Type I error|
+|Accept $H_{0}$ (inactive)|Type II error| Correct rejection|
+
+Type I Error (False Positive): rejecting the null hypothesis when it is true
+Type II Error (False Negative): accepting the null hypothesis when it is false
+
+Multiple testing issue
+- if more than one test is made, then the collective FP value is greater than in the single-test
+  - that is, overall Type I error increases
+- e.g: you checked your RNA-Seq data and found 20 significantly different genes with a 0.05 threshold on each gene, then what is the chance that you making at least one error in overall?
+- Pr(making a mistake) = 0.05
+- Pr(not making a mistake) = $1-0.05=0.95$
+- Pr(not making any mistake) = $0.95^{20} = 0.358$
+- Pr(making at least one mistake) = $1-0.358=0.642$
+
+There is a 64.2% chance of making at least one mistake
+
+Bonferroni Correction
+- Most straightforward and plain
+- For n hypothesis tests, only call p-values less than $\alpha$/n as "being significant".
+  - Or, adjust the raw p-value as min(n*p, 1)
+- For example, if we want to have an experiment wide Type I error rate of 0.05 when we comparing 30000 genes, we'd need p-values called as "being significant"
+
+Type I (false positive) error rates
+
+||# not rejected|# rejected|totals|
+|------|------|------|------|
+|# true H|U|V (False Positive)|$m_{0}$|
+|# non-true H|T (False Negative)|S|$m_{1}$|
+|totals|m-R|R|m|
+
+- Family-wise Error Rate: $FWER = p(V \geqslant 1)$
+- Per-family Error Rate: $PFER = E(V)$
+- Per-comparison Error Rate: $PCER = E(V)/m$
+- False Discovery Rate: $FDR = E(V/R)$
+- False Positive Rate: $FPR = E(V/m_{0})$
+
+q-value
+- q-value is an measure of False Discovery Rate (FDR) 
+  - Proposed by Storey et al. in 2002 and tuned for microarray analysis
+- The q-value for a particular gene g is the expected proportion of false positives incurred when calling that gene g "significant"
+- In contrast, the p-value for a particular gene g is the probalility that a randomly generated expression profile would be as or more extremely differentially expressed.
+- Differentially expressed genes
+- Co-expressed genes
+
+Clustering: group cases (genes/samples) with similar expression pattern/levels (Unsupervised learning)
+- Hierarchical Cluster, k-mean Cluster, Self-Organizing Maps (SOM), etc.
+
+Distance measurement: how "similar" between two genes' profile
+Euclidean distance (Absolution distance): $s(x_{1}, x_{2}) = \sqrt{\sum(x_{1k}^2 - x_{2k}^2)}$
+
+Pearson distance (Correlation distance): $s(x_{1}, x_{2}) = \frac{\sum_{k=1}^{K}(x_{1k} - \bar{x_{1}})(x_{2k}-\bar{x_{2})}}{\sqrt{\sum_{k=1}^{K}(x_{1k}-\bar{x_{1}})^2 \sum_{k=1}^{K}(x_{2k}-\bar{x_{2}})^2}}$
+
+Readings
+
+Required
+
+Genome Biol. 2013 Sep 10;14(9):R95. Comprehensive evaluation of differential gene expression analysis methods for RNA-seq data. Rapaport F, Khanin R, Liang Y, Pirun M, Krek A, Zumbo P, Mason CE, Socci ND, Betel D. PMID: 24020486
+
+week 10
+
+## Ontology and Identification of Molecular Pathways
+
+### Ontology and Gene Ontology
+
+
+
+
+
+
+
+OBO format
+XML format
+RDF-XML format
+
+http://www.geneontology.org/
+
+### KEGG Pathway Database
+
+http://www.kegg.jp/kegg/
+
+Flat format
+KEGG Markup Language (KGML) format
+
+
+### Pathway Identification
+
+http://kobas.cbi.pku.edu.cn/
+
+
+### An Application: common molecular pathways underlying addiction
+
+J. Widom. Introduction to Databases. https://www.coursera.org/course/db
+
+Readings Required
+
+Nat Genet. 2000 May;25(1):25-9. Gene ontology: tool for the unification of biology. The Gene Ontology Consortium. PMID: 10802651
+
+Bioinformatics. 2005 Oct 1;21(19):3787-93. Automated genome annotation and pathway identification using the KEGG Orthology (KO) as a controlled vocabulary. Mao X, Cai T, Olyarchuk JG, Wei L. PMID: 15817693
+
+Nucleic Acids Res. 2011 Jul;39(Web Server issue):W316-22. KOBAS 2.0: a web server for annotation and identification of enriched pathways and diseases. Xie C, Mao X, Huang J, Ding Y, Wu J, Dong S, Kong L, Gao G, Li CY, Wei L. PMID: 21715386
+
+PLoS Comput Biol. 2008 Jan;4(1):e2. Genes and (common) pathways underlying drug addiction. Li CY, Mao X, Wei L. PMID: 18179280
+
+week 11
+
+## 
+
+### 
+
+###
+
+### European Bioinformatics Institute
+
+
+Ensembl (http://ensembl.org)
+
+IntAct (http://www.ebi.ac.uk/intact)
+
+Clustal Omega (http://www.clustal.org/omega/)
+
+ClustalW2 - Phylogeny (http://www.ebi.ac.uk/Tools/phylogeny/clustalw2_phylogeny/)
+
+InterPro & InterProScan (http://www.ebi.ac.uk/interpro/)
+
+PRIDE (http://www.ebi.ac.uk/pride/)
+
+### UCSC Genome Browser
+
+UCSC Genome Bioinformatics/ Browser (http://genome.ucsc.edu/)
+
+http://genome.ucsc.edu/cgi-bin/hgTracks
+
+ENCODE Project (http://www.genome.gov/10005107)
+
+ENCODE data portal at UCSC (http://genome.ucsc.edu/encode/)
+
+Neandertal Genome (http://genome.ucsc.edu/Neandertal/)
+
+UCSC BLAT (http://genome.ucsc.edu/cgi-bin/hgBlat)
+
+UCSC In-Silico PCR (http://genome.ucsc.edu/cgi-bin/hgPcr)
+
+### Individual Resources
+
+PDB (http://www.rcsb.org/)
+
+SWISS-MODEL (http://swissmodel.expasy.org/workspace/index.php?func=modelling_simple1&userid=USERID&token=TOKEN)
+
+SWISS-MODEL Repository (http://swissmodel.expasy.org/repository/?pid=smr01&zid=async)
+
+I-TASSER (http://zhanglab.ccmb.med.umich.edu/I-TASSER/)
+
+QUARK (http://zhanglab.ccmb.med.umich.edu/QUARK/)
+
+Protein Model Portal (http://www.proteinmodelportal.org/)
+meta search method which contains 6 template-based predict methods: ModWeb, M4T, SWISS-MODEL, I-TASSER, HHpred, Phyre2
+
+CASP (http://www.predictioncenter.org/)
+
+modENCODE (http://www.modencode.org/)
+
+Rfam (http://rfam.sanger.ac.uk, new site http://rfam.xfam.org/)
+
+PlantTFDB: Plant Transcription Factor Database (http://planttfdb.cbi.pku.edu.cn/)
+
+SOAPdenovo (http://soap.genomics.org.cn/soapdenovo.html)
+
+CNVnator (http://sv.gersteinlab.org/cnvnator/)
+
+Three tools:
+- Bioconductor (http://bioconductor.org/)
+- BioPerl (http://bioperl.org/)
+- BioPython (http://biopython.org)
+
+### CBI Resources Review
+
+http://www.cbi.pku.edu.cn/research/
+
+
+
+week 12
+
+
+
+week 13
+
+
+
+
+week 14
+
+
+
 
