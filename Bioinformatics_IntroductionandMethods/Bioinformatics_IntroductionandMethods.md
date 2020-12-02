@@ -1,12 +1,48 @@
-# Bioinformatics
+# Bioinformatics: Introduction and Methods
 
-## Bioinformatics defination
+生物信息学：导论与方法
+
+https://www.coursera.org/course/pkubioinfo
+
+## Introduction and History
+
+The miracle of life.
+
+Genome: the "manual of life"
+
+mitochondrial DNA, epigenetics, environments/nurture, chance
+
+Human genome has 3.1 billion base pairs. ~2.9% of the bases encode genes. ~97% of the genome was previously called "junk". They contain the regulatory elements that encode instructions on when, where, which, and how much proteins to make.
+
+[The Sequence Read Archive (SRA): Introduction](https://www.ncbi.nlm.nih.gov/sra/docs/)
+
+The SRA is NIH's primary archive of high-throughput sequencing data and is part of the International Nucleotide Sequence Database Collaboration (INSDC) that includes at the NCBI Sequence Read Archive (SRA), the European Bioinformatics Institute (EBI), and the DNA Database of Japan (DDBJ). Data submitted to any of the three organizations are shared among them.
+
+Opportunities and challenges hand‐in‐hand:
+the driving forces of bioinformatics
+- High‐throughput data
+  - Huge amount
+  - Explosive growth
+  - Low signal‐to‐noise ratio
+  - Multiple types
+- Requirements for the methods
+  - Data needs to be stored in efficient **ontology**‐based **database** systems
+  - The huge amount of data requires **efficient** algorithms
+  - Exponential growth requires **scalable** methods
+  - The low signal‐to‐noise ratio requires **accurate** methods
+  - Multiple types of data require data **integrative** methods
+
+What is bioinformatics?
+
+Life sciences -- Computer/Computational sciences
+
+### Bioinformatics defination
 
 Bioinformatics: an interdisciplinary field that develops and applies computer and computational technologies to study biomedical questions.
 - As a technology, bioinformatics is a powerful technology to manage, query, and analyze big data in life sciences
 - As a methodology, bioinformatics is a top-down, holistic, data-driven, genome-wide, and systems approach that generates new hypotheses, finds new patterns, and discovers new functional elements
 
-## History of Bioinformatics
+### History of Bioinformatics
 
 **The Bio- in Bioinformatics**
 
@@ -875,13 +911,34 @@ Three tools:
 
 http://www.cbi.pku.edu.cn/research/
 
-
-
 week 12
 
+# New Gene Evolution Detected by Genomic Computation
 
+## Basic Concepts and Examples
+
+### Case Study I: Origination of New Genes
+
+## A Driver for Human Brain Evolution
+
+
+Readings
+
+Required
+
+Nat Rev Genet. 2013 Sep;14(9):645-60. New genes as drivers of phenotypic evolution. Chen S, Krinsky BH, Long M. PMID: 23949544  
+
+PLoS Biol. 2010 Oct 5;8(10). Chromosomal redistribution of male-biased genes in mammalian evolution with two bursts of gene gain on the X chromosome. Zhang YE, Vibranovski MD, Landback P, Marais GA, Long M. PMID: 20957185  
+
+PLoS Comput Biol. 2010 Mar 26;6(3):e1000734. A human-specific de novo protein-coding gene associated with human brain functions. Li CY, Zhang Y, Wang Z, Zhang Y, Cao C, Zhang PW, Lu SJ, Li XM, Yu Q, Zheng X, Du Q, Uhl GR, Liu QR, Wei L. PMID: 20376170  
+
+PLoS Genet. 2012 Sep;8(9):e1002942. Hominoid-specific de novo protein-coding genes originating from long non-coding RNAs. Xie C, Zhang YE, Chen JY, Liu CJ, Zhou WZ, Li Y, Zhang M, Zhang R, Wei L, Li CY. PMID: 23028352  
 
 week 13
+
+# Evolution Function Analysis of DNA Methyltransferase
+
+## From Dry to Wet, an Evolutionary Story
 
 
 
