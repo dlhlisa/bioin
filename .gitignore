@@ -108,3 +108,4 @@ CODE_OF_CONDUCT.md
 *.cfg
 *.in
 
+/Bioinformatics_IntroductionandMethods/figures/*
