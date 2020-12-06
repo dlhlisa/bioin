@@ -42,6 +42,8 @@ Bioinformatics: an interdisciplinary field that develops and applies computer an
 - As a technology, bioinformatics is a powerful technology to manage, query, and analyze big data in life sciences
 - As a methodology, bioinformatics is a top-down, holistic, data-driven, genome-wide, and systems approach that generates new hypotheses, finds new patterns, and discovers new functional elements
 
+![interdisciplinary](./figures/interdisciplinary.png)
+
 ### History of Bioinformatics
 
 **The Bio- in Bioinformatics**
@@ -101,11 +103,37 @@ Examples of contributions to computer sciences
 - Genetic programming
 - WAN
 
-## Bioinformatics in Mainland China
+Current Bioinformatics Journals
+- Bioinformatics
+- BMC Bioinformatics
+- BMC Systems Biology
+- Briefings in Bioinformatics
+- Bulletin of Mathematical Biology
+- Cancer Informatics
+- Computational Biology and Chemistry
+- Computers in Biology and Medicine
+- Database: The Journal of Biological Databases and Curation
+- IEEE/ACM Transactions on Computational Biology and Bioinformatics
+- Journal of Bioinformatics and Computational Biology
+- Journal of Biomedical Informatics
+- Journal of Computational Biology
+- Journal of Integrative Bioinformatics
+- Journal of Mathematical Biology
+- Journal of Theoretical Biology
+- PLoS Computational Biology
+- Source Code for Biology and Medicine
+- Statistical Applications in Genetics and Molecular Biology
+Others:
+- Nucleic Acids Research
+- Genome Research
+- Nature Methods
+- Nature Biotechnology
+
+### Bioinformatics in Mainland China
 
 Rapid growth since 1990s. Driving force: 1. Internet 2. Genomics 3. increased research funding (Ministry of Science and Technology (MOST), Natural Science Foundation of China (NSFC)) 4. critical mass of researchers & students.
 
-Reading materials:
+### Reading materials:
 
 Required:
 
@@ -117,34 +145,323 @@ Nature. 1991 Jan; 349(10):99 Towards a paradigm shift in biology. Gillbert W.
 
 ## Sequance Alignment
 
-Readings
+- Biology
+  - What is the biological question or problem?
+- Data
+  - What is the input data?
+  - What other supportive data can be used?
+- Model
+  - How is the problem formulated computationally?
+  - Or, what’s the data model?
+- Algorithm
+  - What is the computational algorithm?
+  - How about its performance/limitation?
+
+### Essential Concepts
+
+Biological Question: “How can we determine the similarity
+between two sequences?”
+
+Why is it important?
+- Similar sequence -> Similar structure -> Similar function (The “Sequence‐to‐Structure‐to‐Function Paradigm”)
+- Similar sequence -> Common ancestor (“Homology”)
+
+Sequence Alignment in Biology
+
+The purpose of a sequence alignment is to line up all residues in the inputted sequence(s) for **maximal level of similarity**, in the sense of **their functional or evolutionary relationship**.
+
+[Pairwise Sequence Alignment](https://www.ebi.ac.uk/Tools/psa/)
+
+[Sequence_alignment](Sequence_alignment.png)
+- `|`: same residue
+- `:`: denotes the similarity of different residue. It's similar.
+- `.`: denotes the similarity of different residue. Not similar.
+- `-`: gaps, insertion or deletion (indel), gap penalty
+  - Affine gap penalty: **opening** a gap receives a penalty of d; **extending** a gap receives a penalty of e. So teh total Penalty for a gap with length n would be:
+  Penalty = d + (n-1)*e
+  - Final Score = (sum of substitution scores) + (-1)*(sum of Gap Penalty)
+
+Substitution matrix: EBLOSUM62
+- Symmetry
+- Context-insensitive
+
+### Readings
 
 Required
 
 J Mol Biol. 1981 Mar 25;147(1):195-7. Identification of common molecular subsequences. Smith TF, Waterman MS. PMID: 7265238(Note: you might need a subscription to the Journal of Molecular Biology magazine in order to view the full-text of this paper. However you might also find other websites holding the full-text for this paper, because it is so famous.)
+
 J Mol Biol. 1970 Mar;48(3):443-53. A general method applicable to the search for similarities in the amino acid sequence of two proteins. Needleman SB, Wunsch CD. PMID: 5420325 (Note: you might need a subscription to the Journal of Molecular Biology magazine in order to view the full-text of this paper. However you might also find other websites holding the full-text for this paper, because it is so famous.)
+
 Optional
+
 Proc Natl Acad Sci U S A. 1992 Nov 15; 89(22): 10915–9. Amino acid substitution matrices from protein blocks. S Henikoff and J G Henikoff. PMID: 1438297
+
 Nature. 1953 Apr 25;171(4356):737-8.Molecular structure of nucleic acids; a structure for deoxyribose nucleic acid. WATSON JD, CRICK FH. PMID: 13054692 (Note: this paper is so old, which seems to be the reason why PubMed does not provide a full-text link for this paper. Nevertheless, this paper is so famous, and you can find it easily on the Internet (and even on Wikipedia! Try it.) . Here is the link to the full-text of this paper on the website of Nature Publishing Group: http://www.nature.com/nature/dna50/watsoncrick.pdf)
+
 Horizons in Biochemistry. 1962 pp. 189-225. Molecular disease, evolution, and genetic heterogeneity. Zuckerkandl E., Pauling L.B. (Note: this paper is not archived in PubMed. I (Yang Ding the TA) cannot find the full-text of paper online as I'm writing this page, and since there are copyright issues, I recommend you to refer to some library to find the full-text of this paper. The format of reference here has not been confirmed to be correct yet, and we will check it later.)
+
 Acta Chem. Scand. 1963;17:S9-S16. Pauling L., Zuckerkandl E. Chemical paleogenetics: molecular "restoration studies" of extinct forms of life (Note: this paper is not archived in PubMed. I (Yang Ding the TA) cannot find the full-text of paper online as I'm writing this page, and since there are copyright issues, I recommend you to refer to some library to find the full-text of this paper.)
+
 Evolving Genes and Proteins. 1965 pp. 97-166. Zuckerkandl E., Pauling L. Evolutionary divergence and convergence in proteins (Note: this paper is not archived in PubMed. You can, however, access the full-text of this paper from here: http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.550.4751&rep=rep1&type=pdf
+
 Kameleon. 1970 1(6);28-29. Hesper B., Hogeweg P. Bioinformatica: een werkconcept.
+
 Simulation. 1978 Sep 1;31(3):90. Hogeweg, P. Simulating the growth of cellular forms. (Note: this paper is not archived in PubMed. I (Yang Ding the TA) cannot find the full-text of paper online as I'm writing this page, and since there are copyright issues, I recommend you to refer to some library to find the full-text of this paper.)
+
 Acta Cryst. 1952;5:109-116. Bennett J.M., Kendrew J.C. The computation of fourier syntheses with a digital electronic calculating machine.(Note: this paper is not archived in PubMed. I (Yang Ding the TA) cannot find the full-text of paper online as I'm writing this page, and since there are copyright issues, I recommend you to refer to some library to find the full-text of this paper.)
+
 Proceedings-Fall Joint Computer Conference. 1962. Dayhoff M., Ledley R. COMPROTEIN: a computer program to aid primary protein structure determination. (Note: this paper is not archived in PubMed. I (Yang Ding the TA) cannot find the full-text of paper online as I'm writing this page, and since there are copyright issues, I recommend you to refer to some library to find the full-text of this paper.)
+
 Science. 1966 Apr 15;152(3720):363-6. Eck RV, Dayhoff MO. Evolution of the structure of ferredoxin based on living relics of primitive amino Acid sequences. PMID: 17775169 (Note: you might need a subscription to the Science magazine in order to view the full-text of this paper.)
+
 Science. 1967 Jan 20;155(3760):279-84. Fitch WM, Margoliash E.Construction of phylogenetic trees. PMID: 5334057 (Note: you might need a subscription to the Journal of Molecular Biology magazine in order to view the full-text of this paper.)
+
 J Mol Biol. 1970 Mar;48(3):443-53. A general method applicable to the search for similarities in the amino acid sequence of two proteins. Needleman SB, Wunsch CD. PMID: 5420325 (Note: you might need a subscription to the Journal of Molecular Biology magazine in order to view the full-text of this paper.)
+
 Atlas of protein sequence and structure. 1978. Chapter 22: A model of evolutionary change in proteins. Dayhoff M. O., Schwartz R. M. (Note: this paper is not archived in PubMed. I (Yang Ding the TA) cannot find the full-text of paper online as I'm writing this page, and since there are copyright issues, I recommend you to refer to some library to find the full-text of this paper.)
+
 J Mol Biol. 1981 Mar 25;147(1):195-7. Identification of common molecular subsequences. Smith TF, Waterman MS. PMID: 7265238 (Note: you might need a subscription to the Journal of Molecular Biology magazine in order to view the full-text of this paper. However you might also find other websites holding the full-text for this paper, because it is so famous.)
+
 J Mol Biol. 1990 Oct 5;215(3):403-10. Basic local alignment search tool. Altschul SF, Gish W, Miller W, Myers EW, Lipman DJ. PMID: 2231712 (Note: you might need a subscription to the Journal of Molecular Biology magazine in order to view the full-text of this paper. However you might also find other websites holding the full-text for this paper, because it is so famous.)
+
 Nucleic Acids Res. 1997 Sep 1;25(17):3389-402. Gapped BLAST and PSI-BLAST: a new generation of protein database search programs. Altschul SF, Madden TL, Schäffer AA, Zhang J, Zhang Z, Miller W, Lipman DJ. PMID: 9254694
+
 Bioinformatics. 2003 Nov 22;19(17):2176-90. Early bioinformatics: the birth of a discipline--a personal view. Ouzounis CA, Valencia A. PMID: 14630646
+
+## Global Alignment by Dynamic Programming
+
+Pairwise Sequence Alignment: in Maths
+- Input data:
+  - Two sequences S1 and S2
+- Parameter(s)
+  - A scoring function f for
+    - Substitutions
+    - Gaps
+- Output:
+  - The optimal alignment of S1 and S2, which has the maximal score.
+  $\arg \max_{ali}(f(ali(S1, S2))$
+
+Sequence Alignment: Enumerate?
+
+$\frac{(2n)!}{(n!)^2}$
+
+Sequence Alignment:
+
+What is the computational Algorithm? A residue can either
+- Align to other residue, or
+- Align to a gap
+
+The **best alignment** that ends at a given pair of symbols is the **best alignment** of the sequences up to that point, plus the **best alignment** for the two additional symbols.
+
+Dynamic Programming
+
+Dynamic Programming solves problems by combining the solutions to sub‐problems.
+- Break the problem into smaller sub‐problems
+- Solve these sub‐problems optimally recursively
+- Use these optimal solutions to construct an optimal solution for the original problem
+
+The **best alignment** that ends at a given pair of symbols is the **best alignment** of the sequences up to that point, plus the **best alignment** for the two additional symbols.
+
+![Sequence_alignment_dp](./figures/Sequence_alignment_dp.png)
+
+![Sequence_alignment_dp1](./figures/Sequence_alignment_dp1.png)
+
+![Sequence_alignment_dp2](./figures/Sequence_alignment_dp2.png)
+
+![Sequence_alignment_dp3](./figures/Sequence_alignment_dp3.png)
+
+![Sequence_alignment_dp4](./figures/Sequence_alignment_dp4.png)
+
+![Sequence_alignment_dp5](./figures/Sequence_alignment_dp5.png)
+
+![Sequence_alignment_dp6](./figures/Sequence_alignment_dp6.png)
+
+![Sequence_alignment_dp7](./figures/Sequence_alignment_dp7.png)
+
+![Sequence_alignment_dp8](./figures/Sequence_alignment_dp8.png)
+
+![Sequence_alignment_dp9](./figures/Sequence_alignment_dp9.png)
+
+![Sequence_alignment_dp10](./figures/Sequence_alignment_dp10.png)
+
+![Sequence_alignment_dp11](./figures/Sequence_alignment_dp11.png)
+
+![Sequence_alignment_dp12](./figures/Sequence_alignment_dp12.png)
+
+Homology
+- derived from a common ancestor
+  - ortholog: derived from speciation
+  - paralog: derived from duplication
+- Ortholog comes with speciation. Paralog comes with duplication
+
+![similarity_vs_identity](./figures/similarity_vs_identity.png)
+
+Similarity Matrix
+- For nucleotides,
+  - usually only distinguish
+match / mismatch
+(identity matrix)
+for sequence alignment
+  - but a more complicated
+substitution model is used
+for phylogeny reconstruction
+- For amino acids,
+  - PAM (1978, Margaret Dayhoff)
+    - Two sequences are 1 PAM apart
+    if they differ in 1 % of the residues.
+    - 1 PAM = one step of evolution
+- BLOSUM (1992, Steven Henikoff & Jorja Henikoff)
+  - computed by looking at "blocks" of conserved sequences found in multiple protein alignments
+
+How to let computer do this job?
+- How to measure similarity?
+  - Similarity matrix
+- How to find out alignment?
+  - Dot matrix
+  - Dynamic programming
+  - BLAST
+
+## From Global to Local
+
+Global Alignment: End‐to‐end
+
+Needleman–Wunsch algorithm
+
+Identify similar sub‐sequence
+
+![global_to_local](./figures/global_to_local.png)
+
+![global_to_local1](./figures/global_to_local1.png)
+
+![global_to_local2](./figures/global_to_local2.png)
+
+![global_to_local3](./figures/global_to_local3.png)
+
+![global_to_local4](./figures/global_to_local4.png)
+
+![global_to_local5](./figures/global_to_local5.png)
+
+![global_to_local6](./figures/global_to_local6.png)
+
+![global_to_local7](./figures/global_to_local7.png)
+
+![global_to_local8](./figures/global_to_local8.png)
+
+## Alignment with Affine Gap Penalty
+
+![global_to_local9](./figures/global_to_local9.png)
+
+![global_to_local10](./figures/global_to_local10.png)
+
+![global_to_local11](./figures/global_to_local11.png)
+
+![global_to_local12](./figures/global_to_local12.png)
+
+![global_to_local13](./figures/global_to_local13.png)
+
+![global_to_local14](./figures/global_to_local14.png)
+
+Smith-Waterman Algorithm
+- Compared with global alignment：
+  - Zero could terminate the current local alignment
+  - Mismatch must be negative scored
+- Other properties：
+  - Suitable to identify conserved local sequence (substring)
+  - Guaranteed to find the best local alignment
+  - Perform poorly when dealing with separated regions within a long sequence
 
 ## Sequence Database Search
 
-Readings
+Sequence Database Searching
+- Rather than do the alignment pair‐wise, it’s more often to search **sequence database** in a **high‐throughput** style.
+- Or, identify similarities between
+  - **novel query sequence**
+  whose structures and functions are usually unknown and/or uncharacterized
+  - **sequences in (public) databases**
+  whose structures and functions have been elucidated and annotated.
+- The **query sequence** is compared/aligned with every sequence in the database
+- **Statistically significant hits** are assumed to be related to the query sequence
+  - Similar **function/structure**
+  - Common **evolutionary ancestor**
+
+BLAST: Intro
+- To make the alignment effectively, a Heuristic algorithm BLAST
+(**B**asic **L**ocal **A**lignment **S**earch **T**ool) is proposed by Altschul et al in 1990.
+- BLAST finds the highest scoring locally optimal alignments between a query sequence and a database.
+  - Very **fast** algorithm
+  - Can be used to search **extremely large** databases
+  - Sufficiently **sensitive** and **selective** for most purposes
+  - **Robust** – the default parameters just work for most cases
+
+[UniProt](https://www.uniprot.org/)
+
+## BLAST Algorithm: a Primer
+
+BLAST Ideas: Seeding‐and‐extending
+1. Find matches (**seed**) between the query and subject
+2. Extend seed into High Scoring Segment Pairs (**HSP**s)
+  Run Smith‐Waterman algorithm on the specified region only.
+3. Assess the reliability of the alignment.
+
+Seeding: For a given word length w (usually 3 for proteins and 11 for nucleotides), slicing the query sequence into multiple continuous “seed words”.
+
+Speedup: Index database
+The database was pre‐indexed to quickly locate all positions in the database for a given seed.
+
+Speedup: mask low‐complexity
+Low complexity sequences yield false positives.
+
+To improve sensitivity, in addition to the seed word itself, the BLAST also use these highly similar “neighbourhood words” (based on the substitution matrix) for seeding.
+
+Quality Assessment
+Given the large data volume, it’s critical to provide some measures for assessing the **statistical significance** of a given hit.
+
+E‐Value: How a match is likely to arise by chance
+- The expected number of alignments with a given score that would be expected to occur at random in the database that has been searched
+  - e.g. if E=10, 10 matches with scores this high are expected to be found by chance
+  $E = kmne^{-\lambda S}$
+  $p = 1-e^{-E}$
+
+  m: length of the query sequence
+  n: length of the database
+  S: score of HSP
+  E>1, the alignment occurred by chance
+  E<0.1 or 0.05, statistically significant
+  E<10-5, high similarity
+
+Heuristic (pronounced hyu‐RIS‐tik, Greek: "Εὑρίσκω", "find" or "discover") refers to experience‐based techniques for problem solving, learning, and discovery. (Source: Wikipedia)
+
+not best, but good enough.
+
+- Key heuristics in BLAST
+  - Seeding‐and‐extending: looking for seeds of high scoring alignments ONLY
+  Use dynamic programming selectively
+- Tradeoff: speed vs. sensitivity
+  - Empirically, 1000 ~ 10000 times faster than plain Dynamic‐Programming‐based local alignment
+  - But suffer from low sensitivity, especially for distant
+sequences (e.g. E.coli -> human)
+
+Why BLAST?
+
+"**Homology** is the central concept for all of biology." -- David Wake. Science, 1994
+
+BLAST is the tool most frequently used for calculating sequence **similarity**, by searching the databases.
+
+If you work with one or a few proteins or genes, it can tell you about their conservation, active sites, structure and regulation in other organisms, etc.
+
+What BLAST does?
+- Identity: the occurrence of exactly the same nucleotide or amino acid in the same position in aligned sequences.
+- Similarity: measure the sameness or difference of the sequences 
+- Homology: is defined in terms of shared ancestors. Homologous sequences are often similar. Sequence regions that are homologous are also called **conserved** regions.
+
+![alignment_algorithm](./figures/alignment_algorithm.png)
+
+![blast](./figures/blast.png)
+
+![blast1](./figures/blast1.png)
+
+### Readings
 
 Required
 
